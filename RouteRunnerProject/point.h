@@ -4,11 +4,12 @@
 
 class Point
 {   /*Class which implements simple 3D dynamics (position, velocity, acceleration)
-    of a Point particle.*/
+    of a point particle.*/
 
     double x,y,z,vx,vy,vz,ax,ay,az;
 
 public:
+    Point ();
     Point(double x_, double y_, double z_,
           double vx_=0, double vy_=0, double vz_=0,
           double ax_=0, double ay_=0, double az_=0);
@@ -19,7 +20,13 @@ public:
 
     void SetAccel(double ax_, double ay_, double az_);
 
-    void UpdateAll(double t);
+    void IncreasePos(double x_, double y_, double z_);
+
+    void IncreaseVel(double vx_, double vy_, double vz_);
+
+    void IncreaseAccel(double ax_, double ay_, double az_);
+
+    void UpdateAll(double timeInterval);
 
     void PrintAll();
 

@@ -1,44 +1,73 @@
 #include "player.h"
+#include "iostream"
+#include "point.h"
+#include "constants.h"
 
-Player(double radius_, double x_, double y_, double z_);
-
-
-Player::Player(double radius_, double x_, double y_, double z_)
-{
+Player::Player(double radius_, Point location_){
     radius = radius_;
-    x = x_;
-    y = y_;
-    z = z_;
+    location = location_;
 }
 
-void Player::Move(string direction, double ammount)
+void Player::Move(std::string direction)
 {
-    switch(direction)
+    if (direction == "left"){
+        location.IncreaseVel(-velocityBoost,0,0);
+        return;
+    }
 
-    case "left":
-        x -= ammount;
-        break;
+    if (direction == "right"){
+        location.IncreaseVel(velocityBoost,0,0);
+        return;
+    }
 
-    case "right":
-        x += ammount;
-        break;
+    if (direction == "up"){
+        location.IncreaseVel(0,velocityBoost,0);
+        return;
+    }
 
-    case "up" :
-        y += ammount;
-        break;
+    if (direction == "down"){
+        location.IncreaseVel(0,-velocityBoost,0);
+        return;
+    }
 
-    case "down" :
-        y -= ammount;
-        break;
-
-    default:
-        cerr << "Invalid arrow input in Player::Move() function.";
-        cerr << "Only left, right, up, down allowed." << endl;
-        break;
+    else {
+        std::cerr << "ERROR: Invalid arrow input in Player::Move() function.";
+        std::cerr << "Only left, right, up, down allowed." << std::endl;
+    }
 }
 
+void Player::SetGravity(std::string on_off)
+{
+    if (on_off == "on"){
+        location.SetAccel(0,0,gravitationalAccel);
+        return;
+    }
+
+    if (on_off == "off"){
+        location.SetAccel(0,0,0);
+        return;
+    }
+
+    else{
+        std::cerr << "ERROR: Invalid input Player::SetGravity() function.";
+        std::cerr << "Only two possible arguments on and off." << std::endl;
+    }
+}
 
 void Player::Jump()
 {
-
+    location.SetVel(0,0,velocityBoost);
+    SetGravity("on");
 }
+
+void Player::PrintAll()
+{
+    location.PrintAll();
+}
+
+void Player::UpdateAll(double timeInterval)
+{
+    location.UpdateAll(timeInterval);
+}
+
+

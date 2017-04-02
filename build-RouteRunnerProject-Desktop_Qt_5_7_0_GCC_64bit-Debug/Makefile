@@ -48,8 +48,12 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../RouteRunnerProject/main.cpp 
-OBJECTS       = main.o
+SOURCES       = ../RouteRunnerProject/main.cpp \
+		../RouteRunnerProject/player.cpp \
+		../RouteRunnerProject/point.cpp 
+OBJECTS       = main.o \
+		player.o \
+		point.o
 DIST          = ../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/unix.conf \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/linux.conf \
@@ -181,6 +185,7 @@ DIST          = ../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_post.prf \
+		../RouteRunnerProject/.qmake.stash \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/default_pre.prf \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/resolve_config.prf \
@@ -192,7 +197,11 @@ DIST          = ../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/exceptions.prf \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/lex.prf \
-		../RouteRunnerProject/RouteRunnerProject.pro  ../RouteRunnerProject/main.cpp
+		../RouteRunnerProject/RouteRunnerProject.pro point.h \
+		constants.h \
+		player.h ../RouteRunnerProject/main.cpp \
+		../RouteRunnerProject/player.cpp \
+		../RouteRunnerProject/point.cpp
 QMAKE_TARGET  = RouteRunnerProject
 DESTDIR       = 
 TARGET        = RouteRunnerProject
@@ -335,6 +344,7 @@ Makefile: ../RouteRunnerProject/RouteRunnerProject.pro ../../../../Programs/Qt/5
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/default_pre.prf \
 		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/resolve_config.prf \
@@ -479,6 +489,7 @@ Makefile: ../RouteRunnerProject/RouteRunnerProject.pro ../../../../Programs/Qt/5
 ../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qt_config.prf:
 ../../../../Programs/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/default_pre.prf:
 ../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/resolve_config.prf:
@@ -534,8 +545,17 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../RouteRunnerProject/main.cpp 
+main.o: ../RouteRunnerProject/main.cpp ../RouteRunnerProject/point.h \
+		../RouteRunnerProject/player.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../RouteRunnerProject/main.cpp
+
+player.o: ../RouteRunnerProject/player.cpp ../RouteRunnerProject/player.h \
+		../RouteRunnerProject/point.h \
+		../RouteRunnerProject/constants.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o player.o ../RouteRunnerProject/player.cpp
+
+point.o: ../RouteRunnerProject/point.cpp ../RouteRunnerProject/point.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o point.o ../RouteRunnerProject/point.cpp
 
 ####### Install
 

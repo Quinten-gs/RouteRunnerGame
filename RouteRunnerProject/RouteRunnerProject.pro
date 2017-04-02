@@ -8,5 +8,6 @@ SOURCES += main.cpp \
     point.cpp
 
 HEADERS += \
-    player.h \
-    point.h
+    point.h \
+    constants.h \
+    player.h
