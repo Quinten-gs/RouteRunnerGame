@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ControlsWindow</class>
+ <widget class="QDialog" name="ControlsWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Controls</string>
+  </property>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>60</y>
+     <width>281</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <row>
+    <property name="text">
+     <string>Movement</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>UI</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <column>
+    <property name="text">
+     <string>Effect</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Key</string>
+    </property>
+   </column>
+   <item row="0" column="0">
+    <property name="text">
+     <string>Jump</string>
+    </property>
+   </item>
+   <item row="0" column="1">
+    <property name="text">
+     <string>Up </string>
+    </property>
+   </item>
+   <item row="1" column="0">
+    <property name="text">
+     <string>Move Left</string>
+    </property>
+   </item>
+   <item row="1" column="1">
+    <property name="text">
+     <string>Left</string>
+    </property>
+   </item>
+   <item row="2" column="0">
+    <property name="text">
+     <string>Move Right</string>
+    </property>
+   </item>
+   <item row="2" column="1">
+    <property name="text">
+     <string>Right</string>
+    </property>
+   </item>
+   <item row="3" column="0">
+    <property name="text">
+     <string>Reset Game</string>
+    </property>
+   </item>
+   <item row="3" column="1">
+    <property name="text">
+     <string>r</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>30</y>
+     <width>59</width>
+     <height>14</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Controls</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>60</y>
+     <width>161</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Close Controls</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
