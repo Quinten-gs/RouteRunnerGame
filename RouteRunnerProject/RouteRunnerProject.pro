@@ -11,23 +11,31 @@ TEMPLATE = app
 SOURCES += main.cpp \
     player.cpp \
     point.cpp \
-    welcomewindow.cpp \
     exitwindow.cpp \
     highscoreswindow.cpp \
-    controlswindow.cpp
+    controlswindow.cpp \
+    user.cpp \
+    gamewindow.cpp \
+    routerunnergame.cpp \
+    highscores.cpp \
+    game.cpp
 
 HEADERS += \
     point.h \
     constants.h \
     player.h \
-    welcomewindow.h \
     exitwindow.h \
     highscoreswindow.h \
-    controlswindow.h
+    controlswindow.h \
+    user.h \
+    gamewindow.h \
+    routerunnergame.h \
+    highscores.h \
+    game.h
 
 
 FORMS += \
-    welcomewindow.ui \
     exitwindow.ui \
     highscoreswindow.ui \
-    controlswindow.ui
+    controlswindow.ui \
+    gamewindow.ui

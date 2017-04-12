@@ -17,3 +17,5 @@ void HighscoresWindow::on_closeButton_clicked()
 {
     this->close();
 }
+
+

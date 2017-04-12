@@ -1,5 +1,5 @@
-#include "welcomewindow.h"
-#include "ui_welcomewindow.h"
+#include "gamewindow.h"
+#include "ui_gamewindow.h"
 #include "highscoreswindow.h"
 #include "ui_highscoreswindow.h"
 #include "exitwindow.h"
@@ -7,21 +7,21 @@
 #include "controlswindow.h"
 #include "ui_controlswindow.h"
 
-WelcomeWindow::WelcomeWindow(QWidget *parent) :
+GameWindow::GameWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::WelcomeWindow)
+    ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
+    ui->errorNameLabel->setVisible(false);
 }
 
-WelcomeWindow::~WelcomeWindow()
+GameWindow::~GameWindow()
 {
     delete ui;
 }
 
 
-
-void WelcomeWindow::on_actionExit_triggered()
+void GameWindow::on_actionExit_triggered()
 {
     ExitWindow* e = new ExitWindow();
     e->setModal(true);
@@ -30,16 +30,27 @@ void WelcomeWindow::on_actionExit_triggered()
 }
 
 
-void WelcomeWindow::on_actionShow_Highscores_triggered()
+void GameWindow::on_actionShow_Highscores_triggered()
 {
     HighscoresWindow* h = new HighscoresWindow();
     h->setModal(true);
     h->exec();
 }
 
-void WelcomeWindow::on_actionControls_triggered()
+void GameWindow::on_actionControls_triggered()
 {
     ControlsWindow* c = new ControlsWindow();
     c->setModal(true);
     c->exec();
+}
+
+void GameWindow::on_pushButton_clicked()
+{   QString userName = ui->nameEdit->text();
+    if (userName.isEmpty()){
+        ui->errorNameLabel->setVisible(true);
+    }
+
+    else{
+
+    }
 }

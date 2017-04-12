@@ -1,4 +1,4 @@
-#include "welcomewindow.h"
+#include "gamewindow.h"
 #include <QApplication>
 #include <iostream>
 #include <point.h>
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     e.show();
     */
 
-    WelcomeWindow w;
+    GameWindow w;
     w.show();
 
     return a.exec();
