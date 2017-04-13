@@ -20,3 +20,25 @@ void User::increaseHighscore(int ammount)
 {
     highscore += ammount;
 }
+
+bool User::operator<(const User &u)
+{
+    if (this->highscore < u.highscore){
+        return true;
+    }
+
+    return false;
+}
+
+bool User::operator>(const User &u)
+{
+    return !(*this<u);
+}
+
+bool User::operator==(const User &u)
+{
+    if (this->name == u.name && this->highscore == u.highscore){
+        return true;
+    }
+    return false;
+}

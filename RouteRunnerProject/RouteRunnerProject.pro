@@ -3,7 +3,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = SlotsAndSignals
+TARGET = RouteRunnerProject
 TEMPLATE = app
 
 
@@ -39,3 +39,5 @@ FORMS += \
     highscoreswindow.ui \
     controlswindow.ui \
     gamewindow.ui
+
+DISTFILES +=

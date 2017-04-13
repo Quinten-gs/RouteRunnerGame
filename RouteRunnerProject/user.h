@@ -16,6 +16,10 @@ public:
     void setHighscore(int newHighscore);
     void increaseHighscore(int ammount);
 
+    bool operator< (const User& u);
+    bool operator> (const User& u);
+    bool operator== (const User& u);
+
 signals:
 
 private slots:
