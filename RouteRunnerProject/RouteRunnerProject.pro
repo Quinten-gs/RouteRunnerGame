@@ -16,9 +16,10 @@ SOURCES += main.cpp \
     controlswindow.cpp \
     user.cpp \
     gamewindow.cpp \
-    routerunnergame.cpp \
     highscores.cpp \
-    game.cpp
+    game.cpp \
+    track.cpp \
+    mesh.cpp
 
 HEADERS += \
     point.h \
@@ -29,9 +30,10 @@ HEADERS += \
     controlswindow.h \
     user.h \
     gamewindow.h \
-    routerunnergame.h \
     highscores.h \
-    game.h
+    game.h \
+    track.h \
+    mesh.h
 
 
 FORMS += \

@@ -6,12 +6,15 @@
 #include <string>
 #include <highscores.h>
 #include <fstream>
+#include <game.h>
+#include <track.h>
 
 #include <exitwindow.h>
 
 int main(int argc, char *argv[])
 {
 
+    Track tr(10,10);
 //    Point p(0,0,0);
 //    Player Quinten(10,p);
 //    Quinten.PrintAll();
@@ -26,7 +29,7 @@ int main(int argc, char *argv[])
 //Highscore test
     /*
     Highscores scores(6);
-    scores.deleteHighscores();
+    //scores.deleteHighscores();
     scores.addUser("test1", 100);
     scores.addUser("test2", 20);
     scores.addUser("test3",30);
@@ -37,18 +40,20 @@ int main(int argc, char *argv[])
     scores.sortUsers();
     std::cout << "After sorting: " << '\n';
     scores.printUsers();
-    scores.deleteHighscores();
-    */
+    //scores.deleteHighscores();
+//    */
 //    QApplication a(argc, argv);
-//    /*
-   // ExitWindow e;
-    //e.show();
+//    Game g;
+//    g.scores->deleteHighscores();
+//    std::cout << "Printing known users from file: " << std::endl;
+//    g.scores->printUsers();
+//    QString name = "Quinten";
+//    g.scores->addUser(name, 199 );
+//    std::cout << "Printing all with added Quinten: "<< std::endl;
+//    g.scores->printUsers();
 
 
-    //GameWindow w;
-    //w.show();
-
-    return 0;
+    return 0;//a.exec();
 }
 
 

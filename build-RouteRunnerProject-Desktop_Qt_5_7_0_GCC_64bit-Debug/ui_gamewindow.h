@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -36,12 +37,14 @@ public:
     QAction *actionAbout;
     QAction *actionShow_Highscores;
     QAction *actionReset_Highscores;
+    QAction *actionNew_Game_2;
     QWidget *centralwidget;
     QTextBrowser *textBrowser;
     QLabel *label;
     QPushButton *pushButton;
     QLineEdit *nameEdit;
     QLabel *errorNameLabel;
+    QGraphicsView *graphicsView;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuHelp;
@@ -67,6 +70,8 @@ public:
         actionShow_Highscores->setObjectName(QStringLiteral("actionShow_Highscores"));
         actionReset_Highscores = new QAction(GameWindow);
         actionReset_Highscores->setObjectName(QStringLiteral("actionReset_Highscores"));
+        actionNew_Game_2 = new QAction(GameWindow);
+        actionNew_Game_2->setObjectName(QStringLiteral("actionNew_Game_2"));
         centralwidget = new QWidget(GameWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         textBrowser = new QTextBrowser(centralwidget);
@@ -85,6 +90,9 @@ public:
         errorNameLabel->setObjectName(QStringLiteral("errorNameLabel"));
         errorNameLabel->setEnabled(true);
         errorNameLabel->setGeometry(QRect(130, 270, 411, 41));
+        graphicsView = new QGraphicsView(centralwidget);
+        graphicsView->setObjectName(QStringLiteral("graphicsView"));
+        graphicsView->setGeometry(QRect(20, 20, 601, 411));
         GameWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(GameWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -103,7 +111,7 @@ public:
         menubar->addAction(menuFile->menuAction());
         menubar->addAction(menuHighscores->menuAction());
         menubar->addAction(menuHelp->menuAction());
-        menuFile->addAction(actionNew_Game);
+        menuFile->addAction(actionNew_Game_2);
         menuFile->addAction(actionSave_Game);
         menuFile->addAction(actionExit);
         menuHelp->addSeparator();
@@ -128,6 +136,7 @@ public:
         actionAbout->setText(QApplication::translate("GameWindow", "About", 0));
         actionShow_Highscores->setText(QApplication::translate("GameWindow", "Show Highscores", 0));
         actionReset_Highscores->setText(QApplication::translate("GameWindow", "Reset Highscores", 0));
+        actionNew_Game_2->setText(QApplication::translate("GameWindow", "New Game", 0));
         textBrowser->setHtml(QApplication::translate("GameWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

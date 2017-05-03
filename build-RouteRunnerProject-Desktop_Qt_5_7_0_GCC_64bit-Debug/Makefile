@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../RouteRunnerProject -I. -I../../../../Programs/Qt/5.7/gcc_64/include -I../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets -I../../../../Programs/Qt/5.7/gcc_64/include/QtGui -I../../../../Programs/Qt/5.7/gcc_64/include/QtCore -I. -I. -I../../../../Programs/Qt/5.7/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../RouteRunnerProject -I. -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I. -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/quinten/Programs/Qt/5.7/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = RouteRunnerProject1.0.0
-DISTDIR = /home/quinten/GitKraken/Projects/RouteRunnerGame/build-RouteRunnerProject-Desktop_Qt_5_7_0_GCC_64bit-Debug/.tmp/RouteRunnerProject1.0.0
+DISTDIR = /home/quinten/Documents/Programming\ Projects/GitKraken/Projects/RouteRunnerGame/build-RouteRunnerProject-Desktop_Qt_5_7_0_GCC_64bit-Debug/.tmp/RouteRunnerProject1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/quinten/Programs/Qt/5.7/gcc_64/lib
 LIBS          = $(SUBLIBS) -L/home/quinten/Programs/Qt/5.7/gcc_64/lib -lQt5Widgets -L/usr/lib64 -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -56,16 +56,18 @@ SOURCES       = ../RouteRunnerProject/main.cpp \
 		../RouteRunnerProject/controlswindow.cpp \
 		../RouteRunnerProject/user.cpp \
 		../RouteRunnerProject/gamewindow.cpp \
-		../RouteRunnerProject/routerunnergame.cpp \
 		../RouteRunnerProject/highscores.cpp \
-		../RouteRunnerProject/game.cpp moc_exitwindow.cpp \
+		../RouteRunnerProject/game.cpp \
+		../RouteRunnerProject/track.cpp \
+		../RouteRunnerProject/mesh.cpp moc_exitwindow.cpp \
 		moc_highscoreswindow.cpp \
 		moc_controlswindow.cpp \
 		moc_user.cpp \
 		moc_gamewindow.cpp \
-		moc_routerunnergame.cpp \
 		moc_highscores.cpp \
-		moc_game.cpp
+		moc_game.cpp \
+		moc_track.cpp \
+		moc_mesh.cpp
 OBJECTS       = main.o \
 		player.o \
 		point.o \
@@ -74,166 +76,168 @@ OBJECTS       = main.o \
 		controlswindow.o \
 		user.o \
 		gamewindow.o \
-		routerunnergame.o \
 		highscores.o \
 		game.o \
+		track.o \
+		mesh.o \
 		moc_exitwindow.o \
 		moc_highscoreswindow.o \
 		moc_controlswindow.o \
 		moc_user.o \
 		moc_gamewindow.o \
-		moc_routerunnergame.o \
 		moc_highscores.o \
-		moc_game.o
-DIST          = ../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/unix.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/linux.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/sanitize.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/gcc-base.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/gcc-base-unix.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/g++-base.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/g++-unix.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/qconfig.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dcore.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dextras.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dinput.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquick.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3drender.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_clucene_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_eglfs_device_lib_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gui.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gui_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_help.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_help_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_location.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_location_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimedia.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_network.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_network_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_nfc.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_opengl.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_platformsupport_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_positioning.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_printsupport.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_purchasing.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qml.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qml_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmltest.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quick.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quick_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_script.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_script_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scxml.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sensors.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialport.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sql.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sql_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_svg.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_svg_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_testlib.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uitools.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webchannel.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webengine.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_websockets.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webview.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webview_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_widgets.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_x11extras.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xml.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xml_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qt_functions.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qt_config.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_post.prf \
+		moc_game.o \
+		moc_track.o \
+		moc_mesh.o
+DIST          = /home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/unix.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/linux.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/sanitize.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/gcc-base.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/gcc-base-unix.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/g++-base.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/g++-unix.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/qconfig.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dcore.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dextras.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dinput.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquick.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3drender.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_clucene_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_eglfs_device_lib_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gui.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gui_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_help.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_help_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_location.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_location_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimedia.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_network.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_network_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_nfc.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_opengl.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_platformsupport_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_positioning.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_printsupport.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_purchasing.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qml.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qml_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmltest.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quick.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quick_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_script.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_script_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scxml.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sensors.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialport.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sql.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sql_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_svg.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_svg_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_testlib.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uitools.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webchannel.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webengine.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_websockets.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webview.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webview_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_widgets.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_x11extras.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xml.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xml_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/qt_functions.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/qt_config.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/spec_post.prf \
 		../RouteRunnerProject/.qmake.stash \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/default_pre.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/resolve_config.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/default_post.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qml_debug.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/warn_on.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qt.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/resources.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/moc.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/unix/opengl.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/uic.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/unix/thread.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/file_copies.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/testcase_targets.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/exceptions.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/yacc.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/lex.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/default_pre.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/resolve_config.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/default_post.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/qml_debug.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/warn_on.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/qt.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/resources.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/moc.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/unix/opengl.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/uic.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/unix/thread.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/file_copies.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/testcase_targets.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/exceptions.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/yacc.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/lex.prf \
 		../RouteRunnerProject/RouteRunnerProject.pro ../RouteRunnerProject/point.h \
 		../RouteRunnerProject/constants.h \
 		../RouteRunnerProject/player.h \
@@ -242,9 +246,10 @@ DIST          = ../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf
 		../RouteRunnerProject/controlswindow.h \
 		../RouteRunnerProject/user.h \
 		../RouteRunnerProject/gamewindow.h \
-		../RouteRunnerProject/routerunnergame.h \
 		../RouteRunnerProject/highscores.h \
-		../RouteRunnerProject/game.h ../RouteRunnerProject/main.cpp \
+		../RouteRunnerProject/game.h \
+		../RouteRunnerProject/track.h \
+		../RouteRunnerProject/mesh.h ../RouteRunnerProject/main.cpp \
 		../RouteRunnerProject/player.cpp \
 		../RouteRunnerProject/point.cpp \
 		../RouteRunnerProject/exitwindow.cpp \
@@ -252,9 +257,10 @@ DIST          = ../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf
 		../RouteRunnerProject/controlswindow.cpp \
 		../RouteRunnerProject/user.cpp \
 		../RouteRunnerProject/gamewindow.cpp \
-		../RouteRunnerProject/routerunnergame.cpp \
 		../RouteRunnerProject/highscores.cpp \
-		../RouteRunnerProject/game.cpp
+		../RouteRunnerProject/game.cpp \
+		../RouteRunnerProject/track.cpp \
+		../RouteRunnerProject/mesh.cpp
 QMAKE_TARGET  = RouteRunnerProject
 DESTDIR       = 
 TARGET        = RouteRunnerProject
@@ -266,313 +272,313 @@ first: all
 $(TARGET): ui_exitwindow.h ui_highscoreswindow.h ui_controlswindow.h ui_gamewindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
-Makefile: ../RouteRunnerProject/RouteRunnerProject.pro ../../../../Programs/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf ../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/unix.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/linux.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/sanitize.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/gcc-base.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/gcc-base-unix.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/g++-base.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/g++-unix.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/qconfig.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dcore.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dextras.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dinput.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquick.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3drender.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_clucene_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_eglfs_device_lib_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gui.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gui_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_help.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_help_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_location.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_location_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimedia.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_network.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_network_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_nfc.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_opengl.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_platformsupport_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_positioning.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_printsupport.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_purchasing.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qml.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qml_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmltest.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quick.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quick_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_script.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_script_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scxml.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sensors.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialport.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sql.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sql_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_svg.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_svg_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_testlib.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uitools.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webchannel.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webengine.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_websockets.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webview.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webview_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_widgets.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_x11extras.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xml.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xml_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qt_functions.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qt_config.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_post.prf \
+Makefile: ../RouteRunnerProject/RouteRunnerProject.pro /home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf /home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/unix.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/linux.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/sanitize.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/gcc-base.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/gcc-base-unix.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/g++-base.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/g++-unix.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/qconfig.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dcore.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dextras.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dinput.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquick.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3drender.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_clucene_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_eglfs_device_lib_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gui.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gui_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_help.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_help_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_location.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_location_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimedia.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_network.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_network_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_nfc.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_opengl.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_platformsupport_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_positioning.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_printsupport.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_purchasing.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qml.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qml_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmltest.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quick.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quick_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_script.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_script_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scxml.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sensors.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialport.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sql.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sql_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_svg.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_svg_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_testlib.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uitools.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webchannel.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webengine.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_websockets.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webview.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webview_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_widgets.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_x11extras.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xml.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xml_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/qt_functions.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/qt_config.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/spec_post.prf \
 		.qmake.stash \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/default_pre.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/resolve_config.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/default_post.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qml_debug.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/warn_on.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qt.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/resources.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/moc.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/unix/opengl.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/uic.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/unix/thread.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/file_copies.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/testcase_targets.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/exceptions.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/yacc.prf \
-		../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/lex.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/default_pre.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/resolve_config.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/default_post.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/qml_debug.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/warn_on.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/qt.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/resources.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/moc.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/unix/opengl.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/uic.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/unix/thread.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/file_copies.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/testcase_targets.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/exceptions.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/yacc.prf \
+		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/lex.prf \
 		../RouteRunnerProject/RouteRunnerProject.pro \
-		../../../../Programs/Qt/5.7/gcc_64/lib/libQt5Widgets.prl \
-		../../../../Programs/Qt/5.7/gcc_64/lib/libQt5Gui.prl \
-		../../../../Programs/Qt/5.7/gcc_64/lib/libQt5Core.prl
+		/home/quinten/Programs/Qt/5.7/gcc_64/lib/libQt5Widgets.prl \
+		/home/quinten/Programs/Qt/5.7/gcc_64/lib/libQt5Gui.prl \
+		/home/quinten/Programs/Qt/5.7/gcc_64/lib/libQt5Core.prl
 	$(QMAKE) -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ../RouteRunnerProject/RouteRunnerProject.pro
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/unix.conf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/linux.conf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/sanitize.conf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/gcc-base.conf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/gcc-base-unix.conf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/g++-base.conf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/common/g++-unix.conf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/qconfig.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dcore.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dextras.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dinput.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquick.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3drender.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_clucene_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_eglfs_device_lib_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gui.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gui_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_help.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_help_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_location.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_location_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimedia.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_network.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_network_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_nfc.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_opengl.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_platformsupport_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_positioning.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_printsupport.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_purchasing.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qml.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qml_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmltest.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quick.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quick_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_script.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_script_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scxml.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sensors.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialport.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sql.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sql_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_svg.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_svg_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_testlib.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uitools.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webchannel.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webengine.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_websockets.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webview.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webview_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_widgets.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_x11extras.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xml.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xml_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qt_functions.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qt_config.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/spec_post.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/unix.conf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/linux.conf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/sanitize.conf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/gcc-base.conf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/gcc-base-unix.conf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/g++-base.conf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/g++-unix.conf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/qconfig.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dcore.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dextras.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dinput.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquick.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3drender.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_clucene_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_core_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designer_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_eglfs_device_lib_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gui.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_gui_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_help.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_help_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_location.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_location_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimedia.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_network.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_network_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_nfc.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_opengl.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_platformsupport_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_positioning.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_printsupport.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_purchasing.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qml.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qml_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmltest.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quick.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quick_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_script.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_script_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scxml.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sensors.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialport.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sql.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_sql_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_svg.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_svg_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_testlib.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uitools.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webchannel.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webengine.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_websockets.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webview.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_webview_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_widgets.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_x11extras.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xml.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xml_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/qt_functions.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/qt_config.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/spec_post.prf:
 .qmake.stash:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/default_pre.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/resolve_config.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/default_post.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qml_debug.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/warn_on.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/qt.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/resources.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/moc.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/unix/opengl.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/uic.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/unix/thread.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/file_copies.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/testcase_targets.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/exceptions.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/yacc.prf:
-../../../../Programs/Qt/5.7/gcc_64/mkspecs/features/lex.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/default_pre.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/resolve_config.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/default_post.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/qml_debug.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/warn_on.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/qt.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/resources.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/moc.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/unix/opengl.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/uic.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/unix/thread.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/file_copies.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/testcase_targets.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/exceptions.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/yacc.prf:
+/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/lex.prf:
 ../RouteRunnerProject/RouteRunnerProject.pro:
-../../../../Programs/Qt/5.7/gcc_64/lib/libQt5Widgets.prl:
-../../../../Programs/Qt/5.7/gcc_64/lib/libQt5Gui.prl:
-../../../../Programs/Qt/5.7/gcc_64/lib/libQt5Core.prl:
+/home/quinten/Programs/Qt/5.7/gcc_64/lib/libQt5Widgets.prl:
+/home/quinten/Programs/Qt/5.7/gcc_64/lib/libQt5Gui.prl:
+/home/quinten/Programs/Qt/5.7/gcc_64/lib/libQt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ../RouteRunnerProject/RouteRunnerProject.pro
 
@@ -587,8 +593,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../RouteRunnerProject/point.h ../RouteRunnerProject/constants.h ../RouteRunnerProject/player.h ../RouteRunnerProject/exitwindow.h ../RouteRunnerProject/highscoreswindow.h ../RouteRunnerProject/controlswindow.h ../RouteRunnerProject/user.h ../RouteRunnerProject/gamewindow.h ../RouteRunnerProject/routerunnergame.h ../RouteRunnerProject/highscores.h ../RouteRunnerProject/game.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../RouteRunnerProject/main.cpp ../RouteRunnerProject/player.cpp ../RouteRunnerProject/point.cpp ../RouteRunnerProject/exitwindow.cpp ../RouteRunnerProject/highscoreswindow.cpp ../RouteRunnerProject/controlswindow.cpp ../RouteRunnerProject/user.cpp ../RouteRunnerProject/gamewindow.cpp ../RouteRunnerProject/routerunnergame.cpp ../RouteRunnerProject/highscores.cpp ../RouteRunnerProject/game.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../RouteRunnerProject/point.h ../RouteRunnerProject/constants.h ../RouteRunnerProject/player.h ../RouteRunnerProject/exitwindow.h ../RouteRunnerProject/highscoreswindow.h ../RouteRunnerProject/controlswindow.h ../RouteRunnerProject/user.h ../RouteRunnerProject/gamewindow.h ../RouteRunnerProject/highscores.h ../RouteRunnerProject/game.h ../RouteRunnerProject/track.h ../RouteRunnerProject/mesh.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../RouteRunnerProject/main.cpp ../RouteRunnerProject/player.cpp ../RouteRunnerProject/point.cpp ../RouteRunnerProject/exitwindow.cpp ../RouteRunnerProject/highscoreswindow.cpp ../RouteRunnerProject/controlswindow.cpp ../RouteRunnerProject/user.cpp ../RouteRunnerProject/gamewindow.cpp ../RouteRunnerProject/highscores.cpp ../RouteRunnerProject/game.cpp ../RouteRunnerProject/track.cpp ../RouteRunnerProject/mesh.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../RouteRunnerProject/exitwindow.ui ../RouteRunnerProject/highscoreswindow.ui ../RouteRunnerProject/controlswindow.ui ../RouteRunnerProject/gamewindow.ui $(DISTDIR)/
 
 
@@ -615,738 +621,796 @@ benchmark: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_exitwindow.cpp moc_highscoreswindow.cpp moc_controlswindow.cpp moc_user.cpp moc_gamewindow.cpp moc_routerunnergame.cpp moc_highscores.cpp moc_game.cpp
+compiler_moc_header_make_all: moc_exitwindow.cpp moc_highscoreswindow.cpp moc_controlswindow.cpp moc_user.cpp moc_gamewindow.cpp moc_highscores.cpp moc_game.cpp moc_track.cpp moc_mesh.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_exitwindow.cpp moc_highscoreswindow.cpp moc_controlswindow.cpp moc_user.cpp moc_gamewindow.cpp moc_routerunnergame.cpp moc_highscores.cpp moc_game.cpp
-moc_exitwindow.cpp: ../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+	-$(DEL_FILE) moc_exitwindow.cpp moc_highscoreswindow.cpp moc_controlswindow.cpp moc_user.cpp moc_gamewindow.cpp moc_highscores.cpp moc_game.cpp moc_track.cpp moc_mesh.cpp
+moc_exitwindow.cpp: /home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		../RouteRunnerProject/exitwindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/bin/moc
-	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I/home/quinten/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/exitwindow.h -o moc_exitwindow.cpp
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
+	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I'/home/quinten/Documents/Programming Projects/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject' -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/exitwindow.h -o moc_exitwindow.cpp
 
-moc_highscoreswindow.cpp: ../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+moc_highscoreswindow.cpp: /home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		../RouteRunnerProject/highscoreswindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/bin/moc
-	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I/home/quinten/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/highscoreswindow.h -o moc_highscoreswindow.cpp
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
+	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I'/home/quinten/Documents/Programming Projects/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject' -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/highscoreswindow.h -o moc_highscoreswindow.cpp
 
-moc_controlswindow.cpp: ../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+moc_controlswindow.cpp: /home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		../RouteRunnerProject/controlswindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/bin/moc
-	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I/home/quinten/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/controlswindow.h -o moc_controlswindow.cpp
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
+	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I'/home/quinten/Documents/Programming Projects/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject' -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/controlswindow.h -o moc_controlswindow.cpp
 
-moc_user.cpp: ../../../../Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+moc_user.cpp: /home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
 		../RouteRunnerProject/user.h \
-		../../../../Programs/Qt/5.7/gcc_64/bin/moc
-	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I/home/quinten/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/user.h -o moc_user.cpp
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
+	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I'/home/quinten/Documents/Programming Projects/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject' -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/user.h -o moc_user.cpp
 
-moc_gamewindow.cpp: ../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+moc_gamewindow.cpp: /home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpen.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsView \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainter.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtextoption.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qscrollarea.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItem \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		../RouteRunnerProject/gamewindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/bin/moc
-	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I/home/quinten/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/gamewindow.h -o moc_gamewindow.cpp
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
+	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I'/home/quinten/Documents/Programming Projects/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject' -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/gamewindow.h -o moc_gamewindow.cpp
 
-moc_routerunnergame.cpp: ../../../../Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../RouteRunnerProject/user.h \
-		../RouteRunnerProject/gamewindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
-		../RouteRunnerProject/routerunnergame.h \
-		../../../../Programs/Qt/5.7/gcc_64/bin/moc
-	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I/home/quinten/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/routerunnergame.h -o moc_routerunnergame.cpp
-
-moc_highscores.cpp: ../../../../Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+moc_highscores.cpp: /home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
 		../RouteRunnerProject/user.h \
 		../RouteRunnerProject/highscores.h \
-		../../../../Programs/Qt/5.7/gcc_64/bin/moc
-	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I/home/quinten/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/highscores.h -o moc_highscores.cpp
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
+	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I'/home/quinten/Documents/Programming Projects/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject' -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/highscores.h -o moc_highscores.cpp
 
 moc_game.cpp: ../RouteRunnerProject/gamewindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpen.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsView \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainter.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtextoption.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qscrollarea.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItem \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		../RouteRunnerProject/highscores.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
 		../RouteRunnerProject/user.h \
 		../RouteRunnerProject/game.h \
-		../../../../Programs/Qt/5.7/gcc_64/bin/moc
-	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I/home/quinten/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/game.h -o moc_game.cpp
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
+	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I'/home/quinten/Documents/Programming Projects/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject' -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/game.h -o moc_game.cpp
+
+moc_track.cpp: /home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		../RouteRunnerProject/constants.h \
+		../RouteRunnerProject/track.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
+	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I'/home/quinten/Documents/Programming Projects/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject' -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/track.h -o moc_track.cpp
+
+moc_mesh.cpp: /home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QList \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItemGroup \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		../RouteRunnerProject/mesh.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
+	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I'/home/quinten/Documents/Programming Projects/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject' -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/mesh.h -o moc_mesh.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1354,19 +1418,19 @@ compiler_uic_make_all: ui_exitwindow.h ui_highscoreswindow.h ui_controlswindow.h
 compiler_uic_clean:
 	-$(DEL_FILE) ui_exitwindow.h ui_highscoreswindow.h ui_controlswindow.h ui_gamewindow.h
 ui_exitwindow.h: ../RouteRunnerProject/exitwindow.ui \
-		../../../../Programs/Qt/5.7/gcc_64/bin/uic
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/uic
 	/home/quinten/Programs/Qt/5.7/gcc_64/bin/uic ../RouteRunnerProject/exitwindow.ui -o ui_exitwindow.h
 
 ui_highscoreswindow.h: ../RouteRunnerProject/highscoreswindow.ui \
-		../../../../Programs/Qt/5.7/gcc_64/bin/uic
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/uic
 	/home/quinten/Programs/Qt/5.7/gcc_64/bin/uic ../RouteRunnerProject/highscoreswindow.ui -o ui_highscoreswindow.h
 
 ui_controlswindow.h: ../RouteRunnerProject/controlswindow.ui \
-		../../../../Programs/Qt/5.7/gcc_64/bin/uic
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/uic
 	/home/quinten/Programs/Qt/5.7/gcc_64/bin/uic ../RouteRunnerProject/controlswindow.ui -o ui_controlswindow.h
 
 ui_gamewindow.h: ../RouteRunnerProject/gamewindow.ui \
-		../../../../Programs/Qt/5.7/gcc_64/bin/uic
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/uic
 	/home/quinten/Programs/Qt/5.7/gcc_64/bin/uic ../RouteRunnerProject/gamewindow.ui -o ui_gamewindow.h
 
 compiler_yacc_decl_make_all:
@@ -1380,121 +1444,136 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 ####### Compile
 
 main.o: ../RouteRunnerProject/main.cpp ../RouteRunnerProject/gamewindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpen.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsView \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainter.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtextoption.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qscrollarea.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItem \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
 		../RouteRunnerProject/point.h \
 		../RouteRunnerProject/player.h \
 		../RouteRunnerProject/highscores.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
 		../RouteRunnerProject/user.h \
+		../RouteRunnerProject/game.h \
+		../RouteRunnerProject/track.h \
+		../RouteRunnerProject/constants.h \
 		../RouteRunnerProject/exitwindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../RouteRunnerProject/main.cpp
 
 player.o: ../RouteRunnerProject/player.cpp ../RouteRunnerProject/player.h \
@@ -1506,919 +1585,972 @@ point.o: ../RouteRunnerProject/point.cpp ../RouteRunnerProject/point.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o point.o ../RouteRunnerProject/point.cpp
 
 exitwindow.o: ../RouteRunnerProject/exitwindow.cpp ../RouteRunnerProject/exitwindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		ui_exitwindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/QVariant \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QAction \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qaction.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qheaderview.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvalidator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregularexpression.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qslider.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyle.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabbar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QTextBrowser \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtextbrowser.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtextdocument.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpen.h
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QVariant \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QAction \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qaction.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvalidator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qslider.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QPushButton \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QTextBrowser \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtextbrowser.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtextedit.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtextdocument.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtextoption.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtextcursor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtextformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpen.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o exitwindow.o ../RouteRunnerProject/exitwindow.cpp
 
 highscoreswindow.o: ../RouteRunnerProject/highscoreswindow.cpp ../RouteRunnerProject/highscoreswindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		ui_highscoreswindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/QVariant \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QAction \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qaction.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qheaderview.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvalidator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregularexpression.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qslider.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyle.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabbar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QLabel \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QListWidget \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qlistwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qlistview.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractbutton.h
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QVariant \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QAction \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qaction.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvalidator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qslider.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QLabel \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qlabel.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QListWidget \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qlistwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qlistview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QPushButton \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o highscoreswindow.o ../RouteRunnerProject/highscoreswindow.cpp
 
 controlswindow.o: ../RouteRunnerProject/controlswindow.cpp ../RouteRunnerProject/controlswindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		ui_controlswindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/QVariant \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QAction \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qaction.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qheaderview.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvalidator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregularexpression.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qslider.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyle.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabbar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QLabel \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QTableWidget \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtablewidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtableview.h
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QVariant \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QAction \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qaction.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvalidator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qslider.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QLabel \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qlabel.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QPushButton \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QTableWidget \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtablewidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtableview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controlswindow.o ../RouteRunnerProject/controlswindow.cpp
 
 user.o: ../RouteRunnerProject/user.cpp ../RouteRunnerProject/user.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o user.o ../RouteRunnerProject/user.cpp
 
 gamewindow.o: ../RouteRunnerProject/gamewindow.cpp ../RouteRunnerProject/gamewindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpen.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsView \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainter.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtextoption.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qscrollarea.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItem \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		ui_gamewindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/QVariant \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QAction \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qaction.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qheaderview.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvalidator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregularexpression.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qslider.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyle.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabbar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QLabel \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QLineEdit \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qlineedit.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtextcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtextformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpen.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtextoption.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QMenu \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qmenu.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QMenuBar \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qmenubar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QPushButton \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QStatusBar \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qstatusbar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QTextBrowser \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtextbrowser.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtextdocument.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QWidget \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QVariant \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QAction \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qaction.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvalidator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qslider.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QLabel \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qlabel.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QLineEdit \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qlineedit.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtextcursor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtextformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QMenu \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qmenu.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QMenuBar \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qmenubar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QPushButton \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QStatusBar \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qstatusbar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QTextBrowser \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtextbrowser.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtextedit.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtextdocument.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QWidget \
 		../RouteRunnerProject/highscoreswindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
 		ui_highscoreswindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QListWidget \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qlistwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qlistview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QListWidget \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qlistwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qlistview.h \
 		../RouteRunnerProject/exitwindow.h \
 		ui_exitwindow.h \
 		../RouteRunnerProject/controlswindow.h \
 		ui_controlswindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QTableWidget \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtablewidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtableview.h
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QTableWidget \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtablewidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtableview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gamewindow.o ../RouteRunnerProject/gamewindow.cpp
 
-routerunnergame.o: ../RouteRunnerProject/routerunnergame.cpp ../RouteRunnerProject/routerunnergame.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../RouteRunnerProject/user.h \
-		../RouteRunnerProject/gamewindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o routerunnergame.o ../RouteRunnerProject/routerunnergame.cpp
-
 highscores.o: ../RouteRunnerProject/highscores.cpp ../RouteRunnerProject/highscores.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
 		../RouteRunnerProject/user.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o highscores.o ../RouteRunnerProject/highscores.cpp
 
 game.o: ../RouteRunnerProject/game.cpp ../RouteRunnerProject/game.h \
 		../RouteRunnerProject/gamewindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpen.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsView \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainter.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtextoption.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qscrollarea.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItem \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
 		../RouteRunnerProject/highscores.h \
-		../../../../Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
 		../RouteRunnerProject/user.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o game.o ../RouteRunnerProject/game.cpp
+
+track.o: ../RouteRunnerProject/track.cpp ../RouteRunnerProject/track.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		../RouteRunnerProject/constants.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o track.o ../RouteRunnerProject/track.cpp
+
+mesh.o: ../RouteRunnerProject/mesh.cpp ../RouteRunnerProject/mesh.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QList \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItemGroup \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mesh.o ../RouteRunnerProject/mesh.cpp
 
 moc_exitwindow.o: moc_exitwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_exitwindow.o moc_exitwindow.cpp
@@ -2435,14 +2567,17 @@ moc_user.o: moc_user.cpp
 moc_gamewindow.o: moc_gamewindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_gamewindow.o moc_gamewindow.cpp
 
-moc_routerunnergame.o: moc_routerunnergame.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_routerunnergame.o moc_routerunnergame.cpp
-
 moc_highscores.o: moc_highscores.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_highscores.o moc_highscores.cpp
 
 moc_game.o: moc_game.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_game.o moc_game.cpp
+
+moc_track.o: moc_track.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_track.o moc_track.cpp
+
+moc_mesh.o: moc_mesh.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mesh.o moc_mesh.cpp
 
 ####### Install
 

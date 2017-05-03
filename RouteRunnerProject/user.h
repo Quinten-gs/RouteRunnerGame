@@ -9,10 +9,10 @@ class User : public QObject
 
 public:
     User();
-    User(std::string* name_, int* highscore_);
-    std::string name;
+    User(QString* name_, int* highscore_);
+    QString name;
     int highscore;
-    void setName(std::string newName);
+    void setName(QString newName);
     void setHighscore(int newHighscore);
     void increaseHighscore(int ammount);
 

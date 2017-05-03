@@ -1,12 +1,13 @@
 #include "user.h"
 
-User::User(std::__cxx11::string *name_, int *highscore_=0)
+User::User(QString *name_, int *highscore_=0)
 {
  name = *name_;
  highscore = *highscore_;
 }
 
-void User::setName(std::string newName)
+
+void User::setName(QString newName)
 {
     name = newName;
 }

@@ -11,10 +11,13 @@ class Game : public QObject
     Q_OBJECT
 public:
     explicit Game(QObject *parent = 0);
+    ~Game();
+
+    Highscores* scores;
+    GameWindow* GUI;
 
 private:
-    Highscores scores;
-    GameWindow GUI;
+
 signals:
 
 public slots:

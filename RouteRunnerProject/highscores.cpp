@@ -1,7 +1,7 @@
 #include "highscores.h"
 #include <iostream>
 #include <fstream>
-#include <istream>
+//#include <ifstream>
 
 Highscores::Highscores(unsigned int maxScores_,QObject *parent) : QObject(parent)
 {
@@ -12,42 +12,47 @@ Highscores::Highscores(unsigned int maxScores_,QObject *parent) : QObject(parent
 Highscores::~Highscores()
 {
  writeHighscores();
- deleteHighscores(); //vector of pointers -> cleaning memory needed;
+ deleteHighscores(); //vector of pointers -> cleaning allocated memory;
 }
 
-void Highscores::addUser(std::string name, int score)
+void Highscores::addUser(QString name, int score)
 {
+    //std::string names = name.toStdString();
+    //std::cout << "Adding user with name " << names << "and score " << score << '\n';
     Users.push_back(new User(&name,&score));
 //    std::cout << '\n';
 //    std::cout<< "Printing after adding " << name << '\n';
-    printUsers();
+//    printUsers();
     sortUsers();
 //    std::cout << '\n';
 //    std::cout<< "Printing after sorting " << name << '\n';
-    printUsers();
+//    printUsers();
     if (Users.size() > maxScores){
         delete Users[Users.size()];   //delete data from pointer
         Users.pop_back();               //delete pointer in vector
     }
 //    std::cout << '\n';
 //    std::cout<< "Printing after deleting last in line " << name << '\n';
-    printUsers();
+//    printUsers();
 }
 
 void Highscores::readHighscores()
 {
     std::string name, scoreStr;
 
-    std::ifstream file("highscores.txt");
+    std::ifstream file;
+    file.open("highscores.txt");
 
-    if(!file){
-        std::cout<<"error trying to open file (highscores.txt) "<<std::endl;
+    if(!file.is_open()){
+        std::cerr<<"error trying to open file (highscores.txt) "<<std::endl;
         exit(0);
     }
 
 
     while(file>>name>>scoreStr){
-        addUser(name,std::stoi(scoreStr));
+        QString QName;
+        QName = QString::fromStdString(name);
+        addUser(QName,std::stoi(scoreStr));
     }
 
     return;
@@ -60,33 +65,35 @@ void Highscores::writeHighscores()
     file.open("highscores.txt");
 
     if (!file.is_open()){
-        std::cout<<"error trying to open file (highscores.txt) "<<std::endl;
+        std::cerr<<"error trying to open file (highscores.txt) "<<std::endl;
         exit(0);
     }
     else{
+        std::string name ;
+        QString QName;
         for(unsigned int i = 0; i<Users.size(); i++){
-            file << Users[i]->name << '\t' << Users[i]-> highscore << '\n';
+            QName = Users[i]->name;
+            name = QName.toStdString();
+            file << name << '\t' << Users[i]-> highscore << '\n';
         }
       file.close();
     }
     return;
 }
 
-bool Highscores::compByHighscore(User *a, User *b)
-{
-    return a->highscore < b->highscore;
-}
-
 
 
 void Highscores::sortUsers()
 {   // Bubble sort algoritm used here
-    // std::sort() gave some problems since vector arguments pointers
-    // It's not impossible to get sort() to work but this was faster and it
-    // does the job
+    // std::sort() gave some problems since vector consists of pointers and we want to sort on member fn.
+    // It's not impossible to get sort() to work but this was faster and it does the job.
+
+    if (Users.size() <= 1){
+        return;
+    }
 
     unsigned int n = Users.size();
-    for(int x=0; x<n; x++)
+    for(unsigned int x=0; x<n; x++)
 
         {
 
@@ -109,13 +116,17 @@ void Highscores::sortUsers()
             }
 
         }
-    std::reverse(Users.begin(), Users.begin()+Users.size());
+    std::reverse(Users.begin(), Users.begin()+Users.size()); //highest highscore first in vector
 }
 
 void Highscores::printUsers()
 {
+    QString QName;
+    std::string name;
     for(unsigned int i = 0; i<Users.size(); i++){
-        std::cout << Users[i]->name << '\t' << Users[i]-> highscore << '\n';
+        QName = Users[i]->name;
+        name = QName.toStdString();
+        std::cout << name << '\t' << Users[i]-> highscore << '\n';
     }
 }
 
@@ -127,5 +138,3 @@ void Highscores::deleteHighscores()
 
     Users.clear();
 }
-
-
