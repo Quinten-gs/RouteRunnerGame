@@ -16,8 +16,13 @@ public:
 
 //private:
     double widthScene,heightScene; //height & width from Graphicsscene element
-    int RandomNo(int min, int max);
+    int randomNo(int min, int max);
+    std::pair<std::vector<double>,std::vector<double>> CalcAxisGrid();
+    std::vector<QRect*> generateBlocks();
+
     std::vector<QRect*> blocks;
+
+
 signals:
 
 public slots:

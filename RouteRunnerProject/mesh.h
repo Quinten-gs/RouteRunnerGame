@@ -11,10 +11,9 @@ class Mesh : public QObject
 
     Q_OBJECT
 public:
-    explicit Mesh(double widthScene_,double heightScene_, QObject *parent=0);
-    std::vector<int> CalcBlockPositions(int min, int max, int noOfElements);
-
-    bool ItemIntersects(QGraphicsItemGroup* item);
+    explicit Mesh(QObject *parent=0);
+    //std::vector<int> CalcBlockPositions(int min, int max, int noOfElements);
+    bool ItemCollides(QGraphicsItemGroup* item);
     void addItemGroup(QGraphicsItemGroup* item);
 
 signals:
@@ -22,10 +21,10 @@ signals:
 public slots:
 
 private:
-    std::pair<int,int> ToCornerCoorConv(double xcentral, double ycentral);
-    std::pair<int,int> ToCentralCoorConv(double xcorner, double ycorner);
-    double widthScene;
-    double heightScene;
+//    std::pair<int,int> ToCornerCoorConv(double xcentral, double ycentral);
+//    std::pair<int,int> ToCentralCoorConv(double xcorner, double ycorner);
+//    double widthScene;
+//    double heightScene;
     QList<QGraphicsItemGroup*> itemList;
 };
 
