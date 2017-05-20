@@ -14,7 +14,6 @@
 int main(int argc, char *argv[])
 {
 
-    Track tr(10,10);
 //    Point p(0,0,0);
 //    Player Quinten(10,p);
 //    Quinten.PrintAll();
@@ -42,8 +41,8 @@ int main(int argc, char *argv[])
     scores.printUsers();
     //scores.deleteHighscores();
 //    */
-//    QApplication a(argc, argv);
-//    Game g;
+    QApplication a(argc, argv);
+    Game g;
 //    g.scores->deleteHighscores();
 //    std::cout << "Printing known users from file: " << std::endl;
 //    g.scores->printUsers();
@@ -53,7 +52,7 @@ int main(int argc, char *argv[])
 //    g.scores->printUsers();
 
 
-    return 0;//a.exec();
+    return a.exec();
 }
 
 

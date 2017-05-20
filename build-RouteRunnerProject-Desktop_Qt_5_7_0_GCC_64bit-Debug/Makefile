@@ -49,7 +49,6 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../RouteRunnerProject/main.cpp \
-		../RouteRunnerProject/player.cpp \
 		../RouteRunnerProject/point.cpp \
 		../RouteRunnerProject/exitwindow.cpp \
 		../RouteRunnerProject/highscoreswindow.cpp \
@@ -59,7 +58,8 @@ SOURCES       = ../RouteRunnerProject/main.cpp \
 		../RouteRunnerProject/highscores.cpp \
 		../RouteRunnerProject/game.cpp \
 		../RouteRunnerProject/track.cpp \
-		../RouteRunnerProject/mesh.cpp moc_exitwindow.cpp \
+		../RouteRunnerProject/mesh.cpp \
+		../RouteRunnerProject/qplayer.cpp moc_exitwindow.cpp \
 		moc_highscoreswindow.cpp \
 		moc_controlswindow.cpp \
 		moc_user.cpp \
@@ -67,9 +67,9 @@ SOURCES       = ../RouteRunnerProject/main.cpp \
 		moc_highscores.cpp \
 		moc_game.cpp \
 		moc_track.cpp \
-		moc_mesh.cpp
+		moc_mesh.cpp \
+		moc_qplayer.cpp
 OBJECTS       = main.o \
-		player.o \
 		point.o \
 		exitwindow.o \
 		highscoreswindow.o \
@@ -80,6 +80,7 @@ OBJECTS       = main.o \
 		game.o \
 		track.o \
 		mesh.o \
+		qplayer.o \
 		moc_exitwindow.o \
 		moc_highscoreswindow.o \
 		moc_controlswindow.o \
@@ -88,7 +89,8 @@ OBJECTS       = main.o \
 		moc_highscores.o \
 		moc_game.o \
 		moc_track.o \
-		moc_mesh.o
+		moc_mesh.o \
+		moc_qplayer.o
 DIST          = /home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/unix.conf \
 		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/common/linux.conf \
@@ -240,7 +242,6 @@ DIST          = /home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.p
 		/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/lex.prf \
 		../RouteRunnerProject/RouteRunnerProject.pro ../RouteRunnerProject/point.h \
 		../RouteRunnerProject/constants.h \
-		../RouteRunnerProject/player.h \
 		../RouteRunnerProject/exitwindow.h \
 		../RouteRunnerProject/highscoreswindow.h \
 		../RouteRunnerProject/controlswindow.h \
@@ -249,8 +250,8 @@ DIST          = /home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.p
 		../RouteRunnerProject/highscores.h \
 		../RouteRunnerProject/game.h \
 		../RouteRunnerProject/track.h \
-		../RouteRunnerProject/mesh.h ../RouteRunnerProject/main.cpp \
-		../RouteRunnerProject/player.cpp \
+		../RouteRunnerProject/mesh.h \
+		../RouteRunnerProject/qplayer.h ../RouteRunnerProject/main.cpp \
 		../RouteRunnerProject/point.cpp \
 		../RouteRunnerProject/exitwindow.cpp \
 		../RouteRunnerProject/highscoreswindow.cpp \
@@ -260,7 +261,8 @@ DIST          = /home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/features/spec_pre.p
 		../RouteRunnerProject/highscores.cpp \
 		../RouteRunnerProject/game.cpp \
 		../RouteRunnerProject/track.cpp \
-		../RouteRunnerProject/mesh.cpp
+		../RouteRunnerProject/mesh.cpp \
+		../RouteRunnerProject/qplayer.cpp
 QMAKE_TARGET  = RouteRunnerProject
 DESTDIR       = 
 TARGET        = RouteRunnerProject
@@ -593,8 +595,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../RouteRunnerProject/point.h ../RouteRunnerProject/constants.h ../RouteRunnerProject/player.h ../RouteRunnerProject/exitwindow.h ../RouteRunnerProject/highscoreswindow.h ../RouteRunnerProject/controlswindow.h ../RouteRunnerProject/user.h ../RouteRunnerProject/gamewindow.h ../RouteRunnerProject/highscores.h ../RouteRunnerProject/game.h ../RouteRunnerProject/track.h ../RouteRunnerProject/mesh.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../RouteRunnerProject/main.cpp ../RouteRunnerProject/player.cpp ../RouteRunnerProject/point.cpp ../RouteRunnerProject/exitwindow.cpp ../RouteRunnerProject/highscoreswindow.cpp ../RouteRunnerProject/controlswindow.cpp ../RouteRunnerProject/user.cpp ../RouteRunnerProject/gamewindow.cpp ../RouteRunnerProject/highscores.cpp ../RouteRunnerProject/game.cpp ../RouteRunnerProject/track.cpp ../RouteRunnerProject/mesh.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../RouteRunnerProject/point.h ../RouteRunnerProject/constants.h ../RouteRunnerProject/exitwindow.h ../RouteRunnerProject/highscoreswindow.h ../RouteRunnerProject/controlswindow.h ../RouteRunnerProject/user.h ../RouteRunnerProject/gamewindow.h ../RouteRunnerProject/highscores.h ../RouteRunnerProject/game.h ../RouteRunnerProject/track.h ../RouteRunnerProject/mesh.h ../RouteRunnerProject/qplayer.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../RouteRunnerProject/main.cpp ../RouteRunnerProject/point.cpp ../RouteRunnerProject/exitwindow.cpp ../RouteRunnerProject/highscoreswindow.cpp ../RouteRunnerProject/controlswindow.cpp ../RouteRunnerProject/user.cpp ../RouteRunnerProject/gamewindow.cpp ../RouteRunnerProject/highscores.cpp ../RouteRunnerProject/game.cpp ../RouteRunnerProject/track.cpp ../RouteRunnerProject/mesh.cpp ../RouteRunnerProject/qplayer.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../RouteRunnerProject/exitwindow.ui ../RouteRunnerProject/highscoreswindow.ui ../RouteRunnerProject/controlswindow.ui ../RouteRunnerProject/gamewindow.ui $(DISTDIR)/
 
 
@@ -621,9 +623,9 @@ benchmark: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_exitwindow.cpp moc_highscoreswindow.cpp moc_controlswindow.cpp moc_user.cpp moc_gamewindow.cpp moc_highscores.cpp moc_game.cpp moc_track.cpp moc_mesh.cpp
+compiler_moc_header_make_all: moc_exitwindow.cpp moc_highscoreswindow.cpp moc_controlswindow.cpp moc_user.cpp moc_gamewindow.cpp moc_highscores.cpp moc_game.cpp moc_track.cpp moc_mesh.cpp moc_qplayer.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_exitwindow.cpp moc_highscoreswindow.cpp moc_controlswindow.cpp moc_user.cpp moc_gamewindow.cpp moc_highscores.cpp moc_game.cpp moc_track.cpp moc_mesh.cpp
+	-$(DEL_FILE) moc_exitwindow.cpp moc_highscoreswindow.cpp moc_controlswindow.cpp moc_user.cpp moc_gamewindow.cpp moc_highscores.cpp moc_game.cpp moc_track.cpp moc_mesh.cpp moc_qplayer.cpp
 moc_exitwindow.cpp: /home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
@@ -1094,6 +1096,10 @@ moc_gamewindow.cpp: /home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QMain
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItem \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../RouteRunnerProject/track.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		../RouteRunnerProject/constants.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItemGroup \
 		../RouteRunnerProject/gamewindow.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
 	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I'/home/quinten/Documents/Programming Projects/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject' -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/gamewindow.h -o moc_gamewindow.cpp
@@ -1264,8 +1270,11 @@ moc_game.cpp: ../RouteRunnerProject/gamewindow.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItem \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
-		../RouteRunnerProject/highscores.h \
+		../RouteRunnerProject/track.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		../RouteRunnerProject/constants.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItemGroup \
+		../RouteRunnerProject/highscores.h \
 		../RouteRunnerProject/user.h \
 		../RouteRunnerProject/game.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
@@ -1320,6 +1329,41 @@ moc_track.cpp: /home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
 		../RouteRunnerProject/constants.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItemGroup \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
 		../RouteRunnerProject/track.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
 	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I'/home/quinten/Documents/Programming Projects/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject' -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/track.h -o moc_track.cpp
@@ -1408,9 +1452,63 @@ moc_mesh.cpp: /home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItem \
 		../RouteRunnerProject/mesh.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
 	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I'/home/quinten/Documents/Programming Projects/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject' -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/mesh.h -o moc_mesh.cpp
+
+moc_qplayer.cpp: /home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		../RouteRunnerProject/point.h \
+		../RouteRunnerProject/qplayer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc
+	/home/quinten/Programs/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/quinten/Programs/Qt/5.7/gcc_64/mkspecs/linux-g++ -I'/home/quinten/Documents/Programming Projects/GitKraken/Projects/RouteRunnerGame/RouteRunnerProject' -I/home/quinten/Programs/Qt/5.7/gcc_64/include -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui -I/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../RouteRunnerProject/qplayer.h -o moc_qplayer.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1556,6 +1654,10 @@ main.o: ../RouteRunnerProject/main.cpp ../RouteRunnerProject/gamewindow.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItem \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../RouteRunnerProject/track.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		../RouteRunnerProject/constants.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItemGroup \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1566,20 +1668,12 @@ main.o: ../RouteRunnerProject/main.cpp ../RouteRunnerProject/gamewindow.h \
 		../RouteRunnerProject/point.h \
 		../RouteRunnerProject/player.h \
 		../RouteRunnerProject/highscores.h \
-		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
 		../RouteRunnerProject/user.h \
 		../RouteRunnerProject/game.h \
-		../RouteRunnerProject/track.h \
-		../RouteRunnerProject/constants.h \
 		../RouteRunnerProject/exitwindow.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../RouteRunnerProject/main.cpp
-
-player.o: ../RouteRunnerProject/player.cpp ../RouteRunnerProject/player.h \
-		../RouteRunnerProject/point.h \
-		../RouteRunnerProject/constants.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o player.o ../RouteRunnerProject/player.cpp
 
 point.o: ../RouteRunnerProject/point.cpp ../RouteRunnerProject/point.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o point.o ../RouteRunnerProject/point.cpp
@@ -2177,6 +2271,10 @@ gamewindow.o: ../RouteRunnerProject/gamewindow.cpp ../RouteRunnerProject/gamewin
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItem \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../RouteRunnerProject/track.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		../RouteRunnerProject/constants.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItemGroup \
 		ui_gamewindow.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QVariant \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QAction \
@@ -2408,8 +2506,11 @@ game.o: ../RouteRunnerProject/game.cpp ../RouteRunnerProject/game.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItem \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
-		../RouteRunnerProject/highscores.h \
+		../RouteRunnerProject/track.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		../RouteRunnerProject/constants.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItemGroup \
+		../RouteRunnerProject/highscores.h \
 		../RouteRunnerProject/user.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o game.o ../RouteRunnerProject/game.cpp
 
@@ -2462,7 +2563,44 @@ track.o: ../RouteRunnerProject/track.cpp ../RouteRunnerProject/track.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		../RouteRunnerProject/constants.h
+		../RouteRunnerProject/constants.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItemGroup \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QRect \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsRectItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o track.o ../RouteRunnerProject/track.cpp
 
 mesh.o: ../RouteRunnerProject/mesh.cpp ../RouteRunnerProject/mesh.h \
@@ -2549,8 +2687,97 @@ mesh.o: ../RouteRunnerProject/mesh.cpp ../RouteRunnerProject/mesh.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
 		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
-		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mesh.o ../RouteRunnerProject/mesh.cpp
+
+qplayer.o: ../RouteRunnerProject/qplayer.cpp ../RouteRunnerProject/qplayer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/QObject \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		../RouteRunnerProject/point.h \
+		../RouteRunnerProject/constants.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/QGraphicsEllipseItem \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/quinten/Programs/Qt/5.7/gcc_64/include/QtGui/qtransform.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qplayer.o ../RouteRunnerProject/qplayer.cpp
 
 moc_exitwindow.o: moc_exitwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_exitwindow.o moc_exitwindow.cpp
@@ -2578,6 +2805,9 @@ moc_track.o: moc_track.cpp
 
 moc_mesh.o: moc_mesh.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mesh.o moc_mesh.cpp
+
+moc_qplayer.o: moc_qplayer.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_qplayer.o moc_qplayer.cpp
 
 ####### Install
 

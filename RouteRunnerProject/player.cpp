@@ -3,7 +3,7 @@
 #include "point.h"
 #include "constants.h"
 
-Player::Player(double radius_, Point location_){
+Player::Player(double radius_, Point location_, QObject *parent=0){
     radius = radius_;
     location = location_;
 }

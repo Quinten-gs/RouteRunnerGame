@@ -9,7 +9,6 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    player.cpp \
     point.cpp \
     exitwindow.cpp \
     highscoreswindow.cpp \
@@ -19,12 +18,12 @@ SOURCES += main.cpp \
     highscores.cpp \
     game.cpp \
     track.cpp \
-    mesh.cpp
+    mesh.cpp \
+    qplayer.cpp
 
 HEADERS += \
     point.h \
     constants.h \
-    player.h \
     exitwindow.h \
     highscoreswindow.h \
     controlswindow.h \
@@ -33,7 +32,8 @@ HEADERS += \
     highscores.h \
     game.h \
     track.h \
-    mesh.h
+    mesh.h \
+    qplayer.h
 
 
 FORMS += \

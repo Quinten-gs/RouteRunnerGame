@@ -1,26 +1,28 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef QPLAYER_H
+#define QPLAYER_H
+
 #include <QObject>
 #include <point.h>
-#include <string>
-
-
-class Player : public QObject{
+#include <QGraphicsItemGroup>
+class Qplayer : public QObject
+{
     Q_OBJECT
 public:
-    Player(double radius_, Point location_, QObject *parent);
+    Qplayer(double x, double y, QObject *parent=0);
     void Move(std::string direction);
     void SetGravity(std::string on_off);
     void Jump();
     void PrintAll();
     void UpdateAll(double timeInterval);
+    QGraphicsItemGroup* itemGroup;
 private:
     Point location;
     double radius;
+
 
 signals:
 
 public slots:
 };
 
-#endif // PLAYER_H
+#endif // QPLAYER_H

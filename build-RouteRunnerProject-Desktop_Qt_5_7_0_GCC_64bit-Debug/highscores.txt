@@ -1,0 +1,15 @@
+qsd	0
+qsd	0
+qd	0
+qsd	0
+qsd	0
+qsd	0
+qd	0
+qsd	0
+qsd	0
+qsd	0
+qsd	0
+qsd	0
+qsd	0
+qd	0
+ds	0
