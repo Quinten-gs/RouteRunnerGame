@@ -5,12 +5,33 @@
 
 Track::Track(double widthScene_, double heightScene_, QObject *parent)
 {
+    //Generating all the blocks for the tracks
     srand(time(NULL));  //Changed from rand(). srand() seeds rand for you. // Seeding once!
     widthScene = widthScene_;
     heightScene = heightScene_;
     blocks = generateBlocks();
     itemGroup = new QGraphicsItemGroup();
+
+    //Defining constraints for runner later on
+    double widthBlock = widthScene/numberOfGridElements;
+    double heightBlock = heightScene/numberOfGridElements;
+
+    numberOfElementsInTrack = blocks.size();
+    maxY = heightScene/2+heightBlock*4;
+    minY = -heightScene/2-heightBlock*4;
+    maxX = widthScene;
+    minX = -widthBlock;
+
+    //Export everyting to a QGraphicsItemGroup
     exportTrackToGroup();
+}
+
+Track::~Track()
+{
+    delete itemGroup;
+    itemGroup = NULL;
+
+
 }
 
 bool Track::randomSuccess(double succesRate)
@@ -140,36 +161,11 @@ void Track::exportTrackToGroup()
 
     for (unsigned int i = 0; i < blocks.size(); i++){
         itemGroup->addToGroup(new QGraphicsRectItem(*blocks[i]));
+        blockItems.push_back(new QGraphicsRectItem(*blocks[i]));
+        //Seems unnecessairy to put elements in a vector but it's handy for accessing
+        // later on (collision detection in gameloop.cpp)
     }
 
-//    QGraphicsRectItem* RectItem;
-//    std::cout<<"blocks size" << blocks.size();
-//    for (unsigned int i = 0; i<blocks.size(); i++){
-//        RectItem = new QGraphicsRectItem(*blocks[i]);
-//        itemGroup.addToGroup(RectItem);
-//    }
     return;
 }
-
-//std::vector<int> Mesh::CalcBlockPositions(int min, int max, int noOfElements)
-//{
-//    //We're working in corner coordinates here.
-
-//    int difference = std::abs(max - min);
-//    int singleElementLength = difference/noOfElements;
-
-//    std::vector<int> positions;
-
-//    for (int i = 0; i<=noOfElements; i++){
-//        if (positions.size() == 0) {
-//            positions.push_back(0);
-//        }
-
-//        else {
-//            positions.push_back(positions[i-1]+singleElementLength);
-//        }
-//    }
-
-//    return positions;
-//}
 

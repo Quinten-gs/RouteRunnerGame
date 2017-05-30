@@ -7,6 +7,7 @@
 #include <QGraphicsView>
 #include <QGraphicsItem>
 #include <track.h>
+#include <keypresseventfilter.h>
 
 namespace Ui {
 class GameWindow;
@@ -19,8 +20,18 @@ class GameWindow : public QMainWindow
 public:
     explicit GameWindow(QWidget *parent = 0);
     ~GameWindow();
+    QGraphicsScene *scene;
 
-private slots:
+    qreal widthScene;
+    qreal heightScene;
+    KeyPressEventFilter* filter;
+
+    void addItem(QGraphicsItem* item);
+    void removeItem(QGraphicsItem* item);
+
+
+public slots:
+    void updateScore(int score);
 
     void on_actionExit_triggered();
 
@@ -34,13 +45,17 @@ private slots:
 
     void NewGame();
 
+    void endGame();
+
+
 signals:
-    void SIG_UserUpdate(QString name, int score);
+    void SIG_NewUser(QString name, int score);
     void SIG_NewGame();
+    void SIG_UpdateHighscores();
 
 private:
     Ui::GameWindow *ui;
-    QGraphicsScene *scene;
+
     QGraphicsEllipseItem *ellipse;
     QGraphicsRectItem *rectangle;
     QGraphicsTextItem *text;

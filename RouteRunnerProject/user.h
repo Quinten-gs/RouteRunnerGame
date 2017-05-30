@@ -9,12 +9,12 @@ class User : public QObject
 
 public:
     User();
-    User(QString* name_, int* highscore_);
+    User(QString name_, int highscore_);
     QString name;
     int highscore;
     void setName(QString newName);
     void setHighscore(int newHighscore);
-    void increaseHighscore(int ammount);
+
 
     bool operator< (const User& u);
     bool operator> (const User& u);
@@ -22,8 +22,8 @@ public:
 
 signals:
 
-private slots:
-
+public slots:
+    void increaseHighscore(int ammount);
 };
 
 #endif // USER_H

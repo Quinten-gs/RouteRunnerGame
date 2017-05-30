@@ -15,11 +15,12 @@ public:
     void printUsers();
     void deleteHighscores();
     void sortUsers();
-
-private:
-    void readHighscores();
-    void writeHighscores();
     std::vector<User*> Users;
+    QString OutputScore(int i);
+private:
+    void readHighscoresfromTxt();
+    void writeHighscorestoTxt();
+
     unsigned int maxScores;
 
 signals:  

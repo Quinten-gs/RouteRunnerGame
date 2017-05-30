@@ -9,60 +9,59 @@ Point::Point()
     ax = 0; ay = 0;
 }
 
-Point::Point(double x_, double y_,
-             double vx_, double vy_,
-             double ax_, double ay_)
+Point::Point(qreal x_, qreal y_,
+             qreal vx_, qreal vy_,
+             qreal ax_, qreal ay_)
 {
     x = x_; y = y_;
     vx = vx_; vy = vy_;
     ax = ax_; ay = ay_;
 }
 
-void Point::SetPos(double x_, double y_)
+
+
+void Point::SetPos(qreal x_, qreal y_)
 {
     x = x_;
     y = y_;
 
 }
 
-void Point::SetVel(double vx_, double vy_)
+void Point::SetVel(qreal vx_, qreal vy_)
 {
     vx = vx_;
     vy = vy_;
 
 }
 
-void Point::SetAccel(double ax_, double ay_)
+void Point::SetAccel(qreal ax_, qreal ay_)
 {
     ax = ax_;
     ay = ay_;
 
 }
 
-void Point::IncreasePos(double x_, double y_)
+void Point::IncreasePos(qreal x_, qreal y_)
 {
     x += x_;
     y += y_;
 
 }
 
-void Point::IncreaseVel(double vx_, double vy_)
+void Point::IncreaseVel(qreal vx_, qreal vy_)
 {
     vx += vx_;
     vy += vy_;
-
 }
 
-void Point::IncreaseAccel(double ax_, double ay_)
+void Point::IncreaseAccel(qreal ax_, qreal ay_)
 {
     ax += ax_;
     ay += ay_;
-
 }
 
 
-
-void Point::UpdateAll(double timeInterval)
+void Point::UpdateAll(qreal timeInterval)
 {
     //Order of calculations important (do not update velocity before position)!
 
@@ -72,6 +71,8 @@ void Point::UpdateAll(double timeInterval)
 
     vx = ax*timeInterval + vx;
     vy = ay*timeInterval + vy;
+
+    PrintAll();
 
 }
 

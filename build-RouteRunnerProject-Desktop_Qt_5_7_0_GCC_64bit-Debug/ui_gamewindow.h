@@ -40,11 +40,13 @@ public:
     QAction *actionNew_Game_2;
     QWidget *centralwidget;
     QTextBrowser *textBrowser;
-    QLabel *label;
+    QLabel *namelabel;
     QPushButton *pushButton;
     QLineEdit *nameEdit;
     QLabel *errorNameLabel;
     QGraphicsView *graphicsView;
+    QLabel *lostlabel;
+    QLabel *scorelabel;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuHelp;
@@ -77,9 +79,9 @@ public:
         textBrowser = new QTextBrowser(centralwidget);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
         textBrowser->setGeometry(QRect(110, 50, 411, 131));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(150, 230, 151, 41));
+        namelabel = new QLabel(centralwidget);
+        namelabel->setObjectName(QStringLiteral("namelabel"));
+        namelabel->setGeometry(QRect(150, 230, 151, 41));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(240, 320, 141, 31));
@@ -93,7 +95,21 @@ public:
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setGeometry(QRect(20, 20, 601, 411));
+        lostlabel = new QLabel(centralwidget);
+        lostlabel->setObjectName(QStringLiteral("lostlabel"));
+        lostlabel->setGeometry(QRect(190, 190, 311, 41));
+        scorelabel = new QLabel(centralwidget);
+        scorelabel->setObjectName(QStringLiteral("scorelabel"));
+        scorelabel->setGeometry(QRect(498, 30, 111, 20));
         GameWindow->setCentralWidget(centralwidget);
+        textBrowser->raise();
+        namelabel->raise();
+        pushButton->raise();
+        nameEdit->raise();
+        errorNameLabel->raise();
+        lostlabel->raise();
+        graphicsView->raise();
+        scorelabel->raise();
         menubar = new QMenuBar(GameWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 640, 19));
@@ -149,10 +165,12 @@ public:
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">	2) Click &quot;Start Game&quot;! </span></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">Have fun! </span></p></body></html>", 0));
-        label->setText(QApplication::translate("GameWindow", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Enter name here:  </span></p></body></html>", 0));
+        namelabel->setText(QApplication::translate("GameWindow", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Enter name here:  </span></p></body></html>", 0));
         pushButton->setText(QApplication::translate("GameWindow", "Start Game", 0));
         nameEdit->setText(QString());
         errorNameLabel->setText(QApplication::translate("GameWindow", "<html><head/><body><p><span style=\" font-size:18pt; color:#fd0606;\">Enter a name to play the game! </span></p></body></html>", 0));
+        lostlabel->setText(QApplication::translate("GameWindow", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">You Lost: Try again! </span></p></body></html>", 0));
+        scorelabel->setText(QApplication::translate("GameWindow", "<html><head/><body><p>Score: 0</p></body></html>", 0));
         menuFile->setTitle(QApplication::translate("GameWindow", "File", 0));
         menuHelp->setTitle(QApplication::translate("GameWindow", "Help", 0));
         menuHighscores->setTitle(QApplication::translate("GameWindow", "Highscores", 0));

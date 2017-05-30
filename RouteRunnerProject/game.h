@@ -3,6 +3,7 @@
 
 #include "gamewindow.h"
 #include "highscores.h"
+#include "gameloop.h"
 
 #include <QObject>
 
@@ -12,9 +13,8 @@ class Game : public QObject
 public:
     explicit Game(QObject *parent = 0);
     ~Game();
-
     Highscores* scores;
-    GameWindow* GUI;
+    GameLoop* game;
 
 private:
 

@@ -2,6 +2,7 @@
 #define HIGHSCORESWINDOW_H
 
 #include <QDialog>
+#include <highscores.h>
 
 namespace Ui {
 class HighscoresWindow;
@@ -14,6 +15,7 @@ class HighscoresWindow : public QDialog
 public:
     explicit HighscoresWindow(QWidget *parent = 0);
     ~HighscoresWindow();
+    Highscores scores;
 
 private slots:
 

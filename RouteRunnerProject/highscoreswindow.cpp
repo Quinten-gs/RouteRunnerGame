@@ -6,6 +6,10 @@ HighscoresWindow::HighscoresWindow(QWidget *parent) :
     ui(new Ui::HighscoresWindow)
 {
     ui->setupUi(this);
+    QString txt;
+    for (unsigned int i = 0; i < scores.Users.size(); i++){
+        ui->listWidget->addItem(scores.OutputScore(i));
+    }
 }
 
 HighscoresWindow::~HighscoresWindow()

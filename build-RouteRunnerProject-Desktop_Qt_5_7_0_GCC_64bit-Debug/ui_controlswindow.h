@@ -114,10 +114,6 @@ public:
         ___qtablewidgetitem8->setText(QApplication::translate("ControlsWindow", "Move Right", 0));
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget->item(2, 1);
         ___qtablewidgetitem9->setText(QApplication::translate("ControlsWindow", "Right", 0));
-        QTableWidgetItem *___qtablewidgetitem10 = tableWidget->item(3, 0);
-        ___qtablewidgetitem10->setText(QApplication::translate("ControlsWindow", "Reset Game", 0));
-        QTableWidgetItem *___qtablewidgetitem11 = tableWidget->item(3, 1);
-        ___qtablewidgetitem11->setText(QApplication::translate("ControlsWindow", "r", 0));
         tableWidget->setSortingEnabled(__sortingEnabled);
 
         label->setText(QApplication::translate("ControlsWindow", "Controls", 0));

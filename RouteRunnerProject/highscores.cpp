@@ -6,37 +6,29 @@
 Highscores::Highscores(unsigned int maxScores_,QObject *parent) : QObject(parent)
 {
  maxScores = maxScores_;
- readHighscores();
+ readHighscoresfromTxt();
 }
 
 Highscores::~Highscores()
 {
- writeHighscores();
+ writeHighscorestoTxt();
  deleteHighscores(); //vector of pointers -> cleaning allocated memory;
 }
 
 void Highscores::addUser(QString name, int score)
 {
-    //std::string names = name.toStdString();
-    //std::cout << "Adding user with name " << names << "and score " << score << '\n';
-    Users.push_back(new User(&name,&score));
-//    std::cout << '\n';
-//    std::cout<< "Printing after adding " << name << '\n';
-//    printUsers();
+
+    Users.push_back(new User(name,score));
+
     sortUsers();
-//    std::cout << '\n';
-//    std::cout<< "Printing after sorting " << name << '\n';
-//    printUsers();
+
     if (Users.size() > maxScores){
         delete Users[Users.size()];   //delete data from pointer
         Users.pop_back();               //delete pointer in vector
     }
-//    std::cout << '\n';
-//    std::cout<< "Printing after deleting last in line " << name << '\n';
-//    printUsers();
 }
 
-void Highscores::readHighscores()
+void Highscores::readHighscoresfromTxt()
 {
     std::string name, scoreStr;
 
@@ -58,7 +50,7 @@ void Highscores::readHighscores()
     return;
 }
 
-void Highscores::writeHighscores()
+void Highscores::writeHighscorestoTxt()
 {
 
     std::ofstream file;
@@ -117,6 +109,11 @@ void Highscores::sortUsers()
 
         }
     std::reverse(Users.begin(), Users.begin()+Users.size()); //highest highscore first in vector
+}
+
+QString Highscores::OutputScore(int i)
+{
+    return Users[i]->name +'\t' + QString::number(Users[i]->highscore);
 }
 
 void Highscores::printUsers()

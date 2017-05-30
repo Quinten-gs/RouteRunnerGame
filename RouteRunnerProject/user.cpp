@@ -1,9 +1,9 @@
 #include "user.h"
 
-User::User(QString *name_, int *highscore_=0)
+User::User(QString name_, int highscore_=0)
 {
- name = *name_;
- highscore = *highscore_;
+ name = name_;
+ highscore = highscore_;
 }
 
 
