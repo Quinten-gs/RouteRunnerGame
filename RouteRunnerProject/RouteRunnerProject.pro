@@ -19,7 +19,6 @@ SOURCES += main.cpp \
     track.cpp \
     mesh.cpp \
     runner.cpp \
-    point.cpp \
     keypresseventfilter.cpp \
     gameloop.cpp
 
@@ -33,7 +32,6 @@ HEADERS += \
     highscores.h \
     game.h \
     track.h \
-    mesh.h \
     runner.h \
     point.h \
     keypresseventfilter.h \
