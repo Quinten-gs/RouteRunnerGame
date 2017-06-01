@@ -14,11 +14,6 @@ public:
     ~Track();
     void GenerateRandomTrack();
 
-    double widthScene,heightScene; //height & width from Graphicsscene element
-    double numberOfElementsInTrack;
-    double maxY,minY,maxX,minX; // number used to constraint runner movement
-
-
     bool randomSuccess(double succesRate);
 
     int randomNo(int min, int max);
@@ -29,10 +24,14 @@ public:
 
     void exportTrackToGroup();
 
+
+    double widthScene,heightScene; //height & width from Graphicsscene element
+    double numberOfElementsInTrack;
+    double maxY,minY,maxX,minX; // number used to constraint runner movement
+    QGraphicsItemGroup* itemGroup;
     std::vector<QRect*> blocks;
     std::vector<QGraphicsRectItem*> blockItems;
 
-    QGraphicsItemGroup* itemGroup;
 
 signals:
 

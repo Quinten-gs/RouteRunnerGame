@@ -2,11 +2,8 @@
 #define GameWindow_H
 
 #include <QMainWindow>
-#include <string>
 #include <QGraphicsScene>
-#include <QGraphicsView>
 #include <QGraphicsItem>
-#include <track.h>
 #include <keypresseventfilter.h>
 
 namespace Ui {
@@ -55,10 +52,6 @@ signals:
 
 private:
     Ui::GameWindow *ui;
-
-    QGraphicsEllipseItem *ellipse;
-    QGraphicsRectItem *rectangle;
-    QGraphicsTextItem *text;
     void closePrompt();
 };
 

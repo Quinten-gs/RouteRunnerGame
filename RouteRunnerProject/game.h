@@ -14,7 +14,7 @@ public:
     explicit Game(QObject *parent = 0);
     ~Game();
     Highscores* scores;
-    GameLoop* game;
+    GameLoop* gamelp;
 
 private:
 

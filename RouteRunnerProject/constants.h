@@ -21,7 +21,7 @@ const qreal runnerY = -100;
 
 //probabilities regarding block creation for track
 const double probabilityToGoBlockUpDown = 0.45;
-const double probabilityToNoBlock = 0.15;
+const double probabilityToNoBlock = 0.20;
 const int maxHeightChange = 2;
 const int maxMissingBlocks = 2;
 const double sizePlayerEllipse = 25;

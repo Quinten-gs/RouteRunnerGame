@@ -1,2 +1,15 @@
+qsd	8
+sqd	6
+qsd	5
+qsd	5
+qsd	4
+qsd	4
+sd	3
 qsd	2
+qs	2
+qsd	2
+qd	2
+dsq	1
+wcx	1
 test	1
+qsd	0

@@ -117,7 +117,7 @@ void GameWindow::on_pushButton_clicked()
     ui->graphicsView->setVisible(false);
     ui->scorelabel->setVisible(true);
 
-    //ui->graphicsView->setFocus();
+    ui->graphicsView->setFocus();
 
     filter = new KeyPressEventFilter(this);
     scene->installEventFilter(filter);

@@ -17,10 +17,10 @@ SOURCES += main.cpp \
     highscores.cpp \
     game.cpp \
     track.cpp \
-    mesh.cpp \
     runner.cpp \
     keypresseventfilter.cpp \
-    gameloop.cpp
+    gameloop.cpp \
+    point.cpp
 
 HEADERS += \
     constants.h \

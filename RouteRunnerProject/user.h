@@ -10,8 +10,7 @@ class User : public QObject
 public:
     User();
     User(QString name_, int highscore_);
-    QString name;
-    int highscore;
+
     void setName(QString newName);
     void setHighscore(int newHighscore);
 
@@ -19,6 +18,9 @@ public:
     bool operator< (const User& u);
     bool operator> (const User& u);
     bool operator== (const User& u);
+
+    QString name;
+    int highscore;
 
 signals:
 

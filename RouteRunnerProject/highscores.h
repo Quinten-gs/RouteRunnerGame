@@ -15,8 +15,10 @@ public:
     void printUsers();
     void deleteHighscores();
     void sortUsers();
+
     std::vector<User*> Users;
     QString OutputScore(int i);
+
 private:
     void readHighscoresfromTxt();
     void writeHighscorestoTxt();

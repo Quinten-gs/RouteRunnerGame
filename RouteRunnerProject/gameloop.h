@@ -2,16 +2,14 @@
 #define GAMELOOP_H
 
 #include <QObject>
-#include <QMainWindow>
 #include <string>
 #include <QGraphicsScene>
-#include <QGraphicsView>
-#include <QGraphicsItem>
 #include <track.h>
 #include <QTimer>
 #include <user.h>
 #include <runner.h>
 #include <gamewindow.h>
+#include <keypresseventfilter.h>
 
 class GameLoop : public QObject
 {
@@ -45,7 +43,6 @@ private:
 signals:
     void SIG_UserUpdate(QString userName,int score);
     void SIG_RunnerMovementInitiated(std::string movement);
-    //void SIG_EndTrackReached(int currentScore);
     void SIG_NextGameReached(int scoredPoints);
     void SIG_EndGame(QString username,int endScore);
     void SIG_ClosingGraphics();
